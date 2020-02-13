@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "development": "vue-cli-service serve --open --mode development",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
@@ -10,18 +11,28 @@
   "dependencies": {
     "axios": "^0.19.1",
     "core-js": "^2.6.5",
+    "muse-ui": "^3.0.2",
+    "muse-ui-message": "^0.2.1",
     "vue": "^2.6.10",
+    "vue-cropper": "^0.5.0",
     "vue-router": "^3.1.5",
+    "vue-socket.io": "^3.0.7",
     "vuex": "^3.1.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-plugin-eslint": "^3.11.0",
     "@vue/cli-service": "^3.11.0",
+    "axios-mock-adapter": "^1.17.0",
     "babel-eslint": "^10.0.1",
+    "babel-plugin-import": "^1.13.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "mockjs": "^1.1.0",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {

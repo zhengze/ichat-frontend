@@ -1,18 +1,13 @@
 <template>
   <div id="app">
-    <router-link to="/home">home</router-link>
-    <router-link to="/friends">/friends</router-link>
-    <router-link to="/me">/me</router-link>
-    <router-view></router-view>
+    <router-view/>
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'app',
-  components: {
-  }
+  name: 'app'
 }
 </script>
 
@@ -23,6 +18,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 </style>

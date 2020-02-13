@@ -29,18 +29,15 @@ Vue.use(new VueSocketIO({
 }));
 
 router.beforeEach((to, from, next) => {
-    if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (to.path === '/login') {
-            localStorage.removeItem('accessToken')
-        }
-        let accessToken = localStorage.getItem('accessToken');
-        if (!accessToken && to.path !== '/login') {
-            next({name: 'Login'})
-        } else {
-            next()
-        }
-    } else {
+    if (to.path === '/login') {
+        localStorage.removeItem('accessToken')
+    }
+    if (to.path == '/register' || to.path !== '/login') {
         next()
+    } else {
+        let accessToken = localStorage.getItem('accessToken');
+        let isLogin = accessToken ? true : false;
+        isLogin ? next() : next({'name': 'Login'})
     }
 
 });

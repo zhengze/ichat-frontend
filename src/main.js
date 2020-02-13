@@ -32,7 +32,7 @@ router.beforeEach((to, from, next) => {
     if (to.path === '/login') {
         localStorage.removeItem('accessToken')
     }
-    if (to.path == '/register' || to.path !== '/login') {
+    if (to.path == '/register' || to.path == '/login') {
         next()
     } else {
         let accessToken = localStorage.getItem('accessToken');

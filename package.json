@@ -12,6 +12,7 @@
     "axios": "^0.19.1",
     "core-js": "^2.6.5",
     "muse-ui": "^3.0.2",
+    "muse-ui-message": "^0.2.1",
     "vue": "^2.6.10",
     "vue-cropper": "^0.5.0",
     "vue-router": "^3.1.5",

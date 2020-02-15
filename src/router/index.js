@@ -9,10 +9,6 @@ export default new VueRouter({
             path: '/register',
             name: 'Register',
             component: r => require(['@/pages/Register'], r),
-            meta: {
-                needLogin: false,
-                requiresAuth: false
-            }
         },
         {
             path: '/login',
@@ -46,13 +42,34 @@ export default new VueRouter({
             redirect: {'name': 'Message'}
         },
         {
-            path: '/userchat',
+            path: '/userchat/:username',
             name: 'UserChat',
-            component: r => require(['@/pages/UserChat'], r)
+            component: r => require(['@/pages/UserChat'], r),
         },
         {
             path: '/groupchat',
             name: 'GroupChat',
-            component: r => require(['@/pages/GroupChat'], r)
-        }]
+            component: r => require(['@/pages/GroupChat'], r),
+        },
+        {
+            path: '/add',
+            name: 'Add',
+            component: r => require(['@/pages/Add'], r)
+        },
+        {
+            path: '/user_setting',
+            name: 'UserSetting',
+            component: r => require(['@/pages/UserSetting'], r),
+        },
+        {
+            path: '/group_setting',
+            name: 'GroupSetting',
+            component: r => require(['@/pages/GroupSetting'], r),
+        },
+        {
+            path: '/create_group',
+            name: 'CreateGroup',
+            component: r => require(['@/pages/CreateGroup'], r),
+        },
+    ]
 })

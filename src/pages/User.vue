@@ -48,7 +48,8 @@
                     type: 'warning'
                 }).then(({result}) => {
                     if (result) {
-                        localStorage.removeItem('accessToken')
+                        localStorage.removeItem('accessToken');
+                        this.$store.dispatch('storeBottomNav', 'message')
                         this.$router.push({name: 'Login'});
                     }
                 });

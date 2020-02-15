@@ -1,20 +1,26 @@
 <template>
     <div class="userchat">
-        <ChatHeader :title="title"/>
+                <mu-appbar full-width :title="title" color="primary">
+            <mu-button icon slot="left" @click="goBack">
+                <mu-icon value="chevron_left"></mu-icon>
+            </mu-button>
+            <mu-button icon slot="right" @click="goSetting">
+                <mu-icon value="menu"></mu-icon>
+            </mu-button>
+        </mu-appbar>
         <GroupDialog :title="title" :messages="messages"/>
         <ChatBottom/>
     </div>
 </template>
 
 <script>
-    import ChatHeader from '../components/ChatHeader'
     import ChatBottom from '../components/ChatBottom'
     import GroupDialog from '../components/GroupDialog'
     import {mapState} from 'vuex'
 
     export default {
         name: 'GroupChat',
-        components: {GroupDialog, ChatBottom, ChatHeader},
+        components: {GroupDialog, ChatBottom},
         data() {
             return {
                 title: this.$route.params.gname,
@@ -51,6 +57,12 @@
             getMessage(data) {
                 this.messages.push(data);
             },
+            goBack() {
+                this.$router.go(-1);
+            },
+            goSetting() {
+                this.$router.push({name: 'GroupSetting'})
+            }
         },
         created() {
             this.$socket.emit('group_chat_dialog', this.$route.params.gname)

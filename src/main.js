@@ -25,7 +25,8 @@ Vue.use(new VueSocketIO({
         store,
         actionPrefix: "SOCKET_",
         mutationPrefix: "SOCKET_"
-    }
+    },
+    options: {'accessToken': 'Bearer ' + localStorage.getItem('accessToken')}
 }));
 
 router.beforeEach((to, from, next) => {

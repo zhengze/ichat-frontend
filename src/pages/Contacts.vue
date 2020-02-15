@@ -1,10 +1,28 @@
 <template>
     <div class="contacts">
         <mu-appbar style="width: 100%;" :title="$route.name" color="primary">
-            <mu-button icon slot="right" color="primary">
-                <mu-icon value="add"></mu-icon>
-            </mu-button>
-
+            <mu-menu slot="right">
+                <mu-button icon>
+                    <mu-icon value="add"></mu-icon>
+                </mu-button>
+                <mu-list slot="content">
+                    <mu-list-item button @click="createGroup">
+                        <mu-list-item-content>
+                            <mu-list-item-title>创建群</mu-list-item-title>
+                        </mu-list-item-content>
+                    </mu-list-item>
+                    <mu-list-item button @click="addFriend">
+                        <mu-list-item-content>
+                            <mu-list-item-title>加好友</mu-list-item-title>
+                        </mu-list-item-content>
+                    </mu-list-item>
+                    <mu-list-item button @click="joinGroup">
+                        <mu-list-item-content>
+                            <mu-list-item-title>加入群</mu-list-item-title>
+                        </mu-list-item-content>
+                    </mu-list-item>
+                </mu-list>
+            </mu-menu>
         </mu-appbar>
 
         <mu-container style="padding: 0px">
@@ -62,7 +80,7 @@
 
                 <mu-list>
                     <mu-sub-header>我加入的群</mu-sub-header>
-                    <div v-for="item in groups" @click="goGroupChat(item.gname)">
+                    <div v-for="item in joined_groups" @click="goGroupChat(item.gname)">
                         <mu-list-item avatar button :ripple="false">
                             <mu-list-item-action>
                                 <mu-avatar>
@@ -70,7 +88,7 @@
                                 </mu-avatar>
                             </mu-list-item-action>
                             <mu-list-item-content>
-                                <mu-list-item-title>vue.js</mu-list-item-title>
+                                <mu-list-item-title>{{item.gname}}</mu-list-item-title>
                             </mu-list-item-content>
 
                         </mu-list-item>
@@ -85,25 +103,19 @@
 </template>
 
 <script>
-    import AddAction from "../components/AddAction"
-    import {getFriendList, getGroupList} from "../api/api";
+    import {getFriendList, getGroupList, getJoinedGroupList} from "../api/api";
 
     export default {
         name: 'Contacts',
-        components: {AddAction},
         data() {
             return {
                 active: 0,
-                open: true,
                 friends: [],
-                groups: []
+                groups: [],
+                joined_groups: []
             }
         },
         methods: {
-            toggle() {
-                this.open = !this.open;
-                console.log(this.open)
-            },
             getFriendList() {
                 getFriendList().then(data => {
                     this.friends = data.friends
@@ -114,16 +126,31 @@
                     this.groups = data.groups
                 })
             },
+            getJoinedGroupList() {
+                getJoinedGroupList().then(data => {
+                    this.joined_groups = data.joined_groups
+                })
+            },
             goUserChat(username) {
                 this.$router.push({'name': 'UserChat', params: {'username': username}})
             },
             goGroupChat(gname) {
                 this.$router.push({'name': 'GroupChat', params: {'gname': gname}})
             },
+            createGroup() {
+                this.$router.push({'name': 'CreateGroup'})
+            },
+            addFriend() {
+                this.$router.push({name: 'Add', params: {'searchType': 'friend'}})
+            },
+            joinGroup() {
+                this.$router.push({name: 'Add', params: {'searchType': 'group'}})
+            }
         },
-        mounted() {
+        created() {
             this.getFriendList();
-            this.getGroupList()
+            this.getGroupList();
+            this.getJoinedGroupList()
         }
     }
 </script>

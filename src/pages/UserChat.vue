@@ -1,21 +1,27 @@
 <template>
     <div class="userchat">
 
-<ChatHeader :title="title" />
-<Dialog :title="title" :messages="messages"/>
-<ChatBottom />
+        <mu-appbar full-width :title="title" color="primary">
+            <mu-button icon slot="left" @click="goBack">
+                <mu-icon value="chevron_left"></mu-icon>
+            </mu-button>
+            <mu-button icon slot="right" @click="goSetting">
+                <mu-icon value="menu"></mu-icon>
+            </mu-button>
+        </mu-appbar>
+        <UserDialog :title="title" :messages="messages"/>
+        <ChatBottom/>
     </div>
 </template>
 
 <script>
-    import ChatHeader from '../components/ChatHeader'
     import ChatBottom from '../components/ChatBottom'
-    import Dialog from '../components/Dialog'
-    import { mapState } from 'vuex'
+    import UserDialog from '../components/UserDialog'
+    import {mapState} from 'vuex'
 
     export default {
         name: 'UserChat',
-        components: {Dialog, ChatBottom, ChatHeader},
+        components: {UserDialog, ChatBottom},
         data() {
             return {
                 title: this.$route.params.username,
@@ -29,7 +35,7 @@
             on_response: function (data) {
                 this.getMessages(data)
             },
-            user_message: function(data) {
+            user_message: function (data) {
                 this.getMessage(data);
                 this.$el.scrollTop = this.$el.scrollHeight;
             },
@@ -52,7 +58,12 @@
             getMessage(data) {
                 this.messages.push(data);
             },
-
+            goBack() {
+                this.$router.go(-1);
+            },
+            goSetting() {
+                this.$router.push({name: 'UserSetting'})
+            }
         },
         created() {
             this.$socket.emit('user_chat_dialog', this.$route.params.username, this.currentUser)

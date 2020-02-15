@@ -2,6 +2,7 @@
     <div class="dialog-wrap">
         <mu-flex class="dialog-list" :justify-content="isSelf(item.to_user)?'start':'end'"
                  v-for="(item, index) in messages" :key="index">
+
             <mu-flex v-if="isSelf(item.to_user)" :class="isSelf(item.to_user)?'dialog-left':'dialog-right'">
 
                 <mu-flex justify-content="end">
@@ -35,7 +36,7 @@
 
 <script>
     export default {
-        name: 'Dialog',
+        name: 'UserDialog',
         data() {
             return {
                 refreshing: false,

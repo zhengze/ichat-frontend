@@ -86,14 +86,14 @@
             addFriend(username) {
                 let params = {'username': username};
                 addFriend(params).then(data => {
-
+                    this.$router.push({'name': 'UserChat', params:{'username':username}})
                 })
-                // this.$router.push({name: 'UserSetting', params: {username: username}})
             },
             addGroup(gname) {
                 let params = {'groupname': gname};
-                addGroupMember(params)
-                // this.$router.push({name: 'GroupSetting', params: {gname: gname}})
+                addGroupMember(params).then(data => {
+                    this.$router.push({'name': 'GroupChat', params: {'gname': gname}})
+                })
             }
         },
         created() {

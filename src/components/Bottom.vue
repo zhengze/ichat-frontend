@@ -17,6 +17,8 @@
         name: 'Bottom',
         data() {
             return {
+                // bottom: this.bottomNav
+                bottom: this.bottom1
             }
         },
         methods: {
@@ -27,12 +29,19 @@
         },
         computed: {
             ...mapState({
-                bottom: state => state.bottomNav
+                bottom1: state => state.bottomNav
             })
         },
         created() {
-            this.bottom = this.bottomNav
+            this.bottom = this.bottom1
         },
+        // updated() {
+        //     this.bottom = this.bottomNav
+        // },
+        // mounted() {
+        //                 this.bottom = this.bottomNav
+        //
+        // }
 
     }
 </script>

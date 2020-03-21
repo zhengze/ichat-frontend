@@ -55,7 +55,6 @@
                         <mu-divider></mu-divider>
                     </div>
 
-
                 </mu-list>
             </div>
             <div class="demo-text" v-if="active === 1">

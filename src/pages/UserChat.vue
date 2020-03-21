@@ -1,6 +1,5 @@
 <template>
     <div class="userchat">
-
         <mu-appbar full-width :title="title" color="primary">
             <mu-button icon slot="left" @click="goBack">
                 <mu-icon value="chevron_left"></mu-icon>

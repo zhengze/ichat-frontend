@@ -8,12 +8,9 @@
                 <mu-text-field type="password" v-model="ruleForm.password" prop="password"></mu-text-field>
             </mu-form-item>
             <mu-form-item>
-
-
                 <mu-button full-width color="primary" @click="handleSubmit" class="submit">登录</mu-button>
             </mu-form-item>
         </mu-form>
-
         <mu-flex align-items="center">
             <mu-flex justify-content="center" fill>
                 <div @click="goRegister" class="tip-user">去注册</div>

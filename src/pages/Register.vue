@@ -79,7 +79,6 @@
         padding: 5% 10% 10%;
         margin: 10% 0 10%;
         text-align: center;
-
         .submit {
             border-radius: 20px;
         }

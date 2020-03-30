@@ -73,9 +73,7 @@
           })
         },
         created() {
-            // this.$socket.emit('user_chat_log', "zhangsan")
             this.$socket.emit('user_chat_log', this.currentUser)
-
         },
 
     }

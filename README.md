@@ -97,6 +97,3 @@ vue.config.js配置详情请看[https://cli.vuejs.org/zh/config/#vue-config-js](
 
 ### 服务端
 服务端暂时不对外开放，想看的请联系
-
-- [x] 聊天功能c恒旭
-- [x] 聊天功能
